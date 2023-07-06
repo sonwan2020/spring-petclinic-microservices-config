@@ -1,8 +1,6 @@
 # COMMON APPLICATION PROPERTIES
 
 server:
-  # start services on random port by default
-  port: 0
   # The stop processing uses a timeout which provides a grace period during which existing requests will be allowed to complete but no new requests will be permitted
   shutdown: graceful
 
@@ -80,9 +78,9 @@ spring:
     activate:
       on-profile: mysql
   datasource:
-    url: jdbc:mysql://${MYSQL_SERVER_FULL_NAME}:3306/${MYSQL_DATABASE_NAME}?useSSL=false
-    username: ${MYSQL_SERVER_ADMIN_LOGIN_NAME}
-    password: ${MYSQL_SERVER_ADMIN_PASSWORD}
+    url: jdbc:mysql://sonwan-testsql.mysql.database.azure.com:3306/petclinic?useSSL=false
+    username: sql
+    password: petclinic@sql
   sql:
     init:
       schema-locations: classpath*:db/mysql/schema.sql
@@ -109,10 +107,10 @@ spring:
     activate:
       on-profile: key-vault
 
-MYSQL_SERVER_FULL_NAME: ${MYSQL-SERVER-FULL-NAME}
-MYSQL_DATABASE_NAME: ${MYSQL-DATABASE-NAME}
-MYSQL_SERVER_ADMIN_LOGIN_NAME: ${MYSQL-SERVER-ADMIN-LOGIN-NAME}
-MYSQL_SERVER_ADMIN_PASSWORD: ${MYSQL-SERVER-ADMIN-PASSWORD}
+MYSQL_SERVER_FULL_NAME: sonwan-testsql
+MYSQL_DATABASE_NAME: petclinic
+MYSQL_SERVER_ADMIN_LOGIN_NAME: sql
+MYSQL_SERVER_ADMIN_PASSWORD: petclinic@sql
 
 azure:
   keyvault:
