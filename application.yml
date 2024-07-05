@@ -78,7 +78,7 @@ spring:
     activate:
       on-profile: mysql
   datasource:
-    url: jdbc:mysql://sonwan-testsql:3306/petclinic?useSSL=false
+    url: jdbc:mysql://sonwan-testsql.mysql.database.azure.com:3306/petclinic?useSSL=false
     username: sql
     password: petclinic@sql
   sql:
