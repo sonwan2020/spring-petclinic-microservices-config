@@ -1,6 +1,0 @@
-spring:
-  jms:
-    servicebus:
-      connection-string: ${spring.jms.servicebus.connection-string}
-      idle-timeout: 60000
-      pricing-tier: premium

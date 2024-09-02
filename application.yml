@@ -12,8 +12,9 @@ spring:
     init:
       schema-locations: classpath*:db/hsqldb/schema.sql
       data-locations: classpath*:db/hsqldb/data.sql
-      mode: always
-      platform: hsqldb
+  sleuth:
+    sampler:
+      probability: 1.0
   cloud:
     config:
       # Allow the microservices to override the remote properties with their own System properties or config file
@@ -22,11 +23,8 @@ spring:
       override-none: true
   jpa:
     open-in-view: false
-    show-sql: true
     hibernate:
       ddl-auto: none
-  jmx:
-    enabled: true
 
 # Spring Boot 1.5 makes actuator secure by default
 management.security.enabled: false
@@ -80,51 +78,11 @@ spring:
     activate:
       on-profile: mysql
   datasource:
-    url: jdbc:mysql://${MYSQL_SERVER_FULL_NAME}:3306/${MYSQL_DATABASE_NAME}?useSSL=false
-    username: ${MYSQL_SERVER_ADMIN_LOGIN_NAME}
-    password: ${MYSQL_SERVER_ADMIN_PASSWORD}
+    url: jdbc:mysql://localhost:3306/petclinic?useSSL=false
+    username: root
+    password: petclinic
   sql:
     init:
       schema-locations: classpath*:db/mysql/schema.sql
       data-locations: classpath*:db/mysql/data.sql
-      mode: always
-
----
-spring:
-  config:
-    activate:
-      on-profile: passwordless
-    # url and username are injected by the service configuration as env vars
-    azure:
-      passwordless-enabled: true
-  sql:
-    init:
-      schema-locations: classpath*:db/mysql/schema.sql
-      data-locations: classpath*:db/mysql/data.sql
-      mode: always
-
----
-spring:
-  config:
-    activate:
-      on-profile: key-vault
-
-MYSQL_SERVER_FULL_NAME: ${MYSQL-SERVER-FULL-NAME}
-MYSQL_DATABASE_NAME: ${MYSQL-DATABASE-NAME}
-MYSQL_SERVER_ADMIN_LOGIN_NAME: ${MYSQL-SERVER-ADMIN-LOGIN-NAME}
-MYSQL_SERVER_ADMIN_PASSWORD: ${MYSQL-SERVER-ADMIN-PASSWORD}
-
-azure:
-  keyvault:
-    enabled: true
-    uri: ${AZURE_KEY_VAULT_URI}
-
----
-spring:
-  config:
-    activate:
-      on-profile: docker
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://discovery-server:8761/eureka/
+      mode: ALWAYS
