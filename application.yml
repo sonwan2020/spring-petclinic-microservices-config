@@ -8,10 +8,10 @@ server:
  
 # embedded database init, supports mysql too trough the 'mysql' spring profile
 spring:
-  datasource:
-    url: jdbc:mysql://sql-sonwan-petclinic.private.mysql.database.azure.com:3306/petclinic?useSSL=true
-    username: azureuser
-    password: 'Password#123'
+#  datasource:
+#    url: jdbc:mysql://sql-sonwan-petclinic.private.mysql.database.azure.com:3306/petclinic?useSSL=true
+#    username: azureuser
+#    password: 'Password#123'
   sql:
     init:
       schema-locations: classpath*:db/mysql/schema.sql
